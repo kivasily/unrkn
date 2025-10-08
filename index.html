@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UNРКН — Главная</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="bg-anim" aria-hidden="true"></div>
+  <div id="pageLoader" class="loader-overlay">
+    <div class="loader-circle" aria-hidden="true"></div>
+    <div class="loader-text">Загрузка</div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+  <a class="brand" href="index.html">UNРКН</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">☰</button>
+      <nav class="nav" id="mainNav">
+        <a href="index.html" class="active">Главная</a>
+        <a href="info.html">Инфо</a>
+        <a href="runet.html">РУНЕТ</a>
+        <a href="vk.html">ВК</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero animate fade-up">
+      <div class="hero-inner">
+        <div class="hero-copy">
+      <h1>UNРКН — новости и расследования</h1>
+          <p class="lead">Критический взгляд на действия Роскомнадзора и связанных с ним проектов.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="main-grid">
+      <div class="main-column">
+        <section class="news">
+          <h2>Последние новости</h2>
+          <article class="card animate fade-up">
+            <h3>2025-10-01 — Новая версия мессенджера «Макс» — обзор</h3>
+            <p>В релизе заявлены улучшения интерфейса, но отсутствует прозрачная документация по шифрованию. Сообщается о проблемах с хранением метаданных.</p>
+            <a class="read-more" href="vk.html">Подробнее о Макс →</a>
+          </article>
+
+          <article class="card animate fade-up">
+            <h3>2025-09-20 — Действия РКН и их влияние на свободу слова</h3>
+            <p>РКН продолжает требования к платформам по удалению контента и предоставлению данных. Это влияет на доступность информации и саму структуру локального интернета.</p>
+            <a class="read-more" href="info.html">Подробнее →</a>
+          </article>
+
+          <article class="card animate fade-up">
+            <h3>2025-08-05 — Обновлённый список проблем у крупнейших проектов</h3>
+            <p>Анализ показывает повторяющиеся проблемы: централизованное хранение, отсутствие внешних аудитов и юридическая зависимость от запросов государственных органов.</p>
+            <a class="read-more" href="runet.html">Смотреть обзор РУНЕТа →</a>
+          </article>
+        </section>
+
+        <section class="summary">
+          <h2>Краткая информация</h2>
+          <ul>
+            <li>Цель проекта: информировать о проблемах РКН и связанных сервисов.</li>
+            <li>Темы: цензура, приватность, критика российских интернет-проектов.</li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="side-art">
+        <!-- Большая тян справа от среднего блока. Положите изображение по пути: img/roskom_tyan.png -->
+        <img src="img/roskom_tyan.png" alt="Роскомнадзор тян" class="roskom-tyan large">
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+  <p>© UNРКН — информационный проект. Материалы носят аналитический характер.</p>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

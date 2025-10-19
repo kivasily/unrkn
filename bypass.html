@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Обход блокировок — UNРКН</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="bg-anim" aria-hidden="true"></div>
+  <div id="pageLoader" class="loader-overlay">
+    <div class="loader-circle" aria-hidden="true"></div>
+    <div class="loader-text">Загрузка</div>
+  </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">UNРКН</a>
+      <button class="nav-toggle" id="navToggleBypass" aria-label="Открыть меню">☰</button>
+      <nav class="nav" id="mainNavBypass">
+        <a href="index.html">Главная</a>
+        <a href="info.html">Инфо</a>
+        <a href="runet.html">РУНЕТ</a>
+        <a href="vk.html">ВК</a>
+        <a href="bypass.html" class="active">Обход</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <h1 class="animate fade-up">Обход блокировок</h1>
+    <p class="animate fade-up">Обход блокировок — это использование технических средств для доступа к сайтам и сервисам, ограниченным Роскомнадзором или провайдерами.</p>
+    <section class="projects">
+      <article class="card animate fade-up">
+        <h3>VPN (Virtual Private Network)</h3>
+        <p>VPN — это сервис, который шифрует ваш интернет-трафик и направляет его через сервер в другой стране. Это позволяет скрыть ваш реальный IP-адрес и обойти блокировки. Популярные VPN: ProtonVPN, Windscribe, Outline, NordVPN.</p>
+      </article>
+      <article class="card animate fade-up">
+        <h3>Прокси-серверы</h3>
+        <p>Прокси — это промежуточный сервер, через который проходит ваш трафик. Прокси бывают HTTP, SOCKS5, HTTPS. Они менее надёжны, чем VPN, но могут быть полезны для обхода простых блокировок.</p>
+      </article>
+      <article class="card animate fade-up">
+        <h3>Проект Zapret</h3>
+        <p>Zapret — это набор скриптов и инструментов для обхода блокировок РКН, включая автоматическую настройку прокси, VPN и DNS. Подробнее: <a href="https://github.com/zapret-info/zapret" target="_blank" rel="noopener">GitHub Zapret</a></p>
+      </article>
+      <article class="card animate fade-up">
+        <h3>DNS-over-HTTPS / DNS-over-TLS</h3>
+        <p>Использование защищённых DNS-сервисов (например, Cloudflare, Google DNS) позволяет скрыть запросы к заблокированным сайтам от провайдера.</p>
+      </article>
+      <article class="card animate fade-up">
+        <h3>Tor и I2P</h3>
+        <p>Анонимные сети, которые маршрутизируют трафик через множество узлов. Tor — для доступа к обычным и onion-сайтам, I2P — для скрытых сервисов.</p>
+      </article>
+      <article class="card animate fade-up">
+        <h3>Браузерные расширения</h3>
+        <p>Расширения типа Browsec, FriGate, uVPN позволяют быстро переключать прокси и обходить блокировки прямо в браузере.</p>
+      </article>
+    </section>
+    <section class="summary">
+      <h2>Важные замечания</h2>
+      <ul>
+        <li>Используйте только проверенные сервисы и инструменты.</li>
+        <li>Не передавайте личные данные через сомнительные прокси.</li>
+        <li>Обход блокировок не всегда легален — изучайте местные законы.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© UNРКН — информационный проект.</p>
+    </div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>

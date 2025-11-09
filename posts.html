@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UNРКН — Посты</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    /* Только для страницы постов: анимированный nav-бар */
+    .navbar-animated {
+      background: linear-gradient(90deg, #1ea7ff, #3ec6ff, #072146, #1ea7ff 90%);
+      background-size: 300% 100%;
+  animation: navbarGradient 13s ease-in-out infinite;
+      box-shadow: 0 2px 12px 0 rgba(30,167,255,0.08);
+    }
+    @keyframes navbarGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .navbar-animated .nav a { transition: background 0.3s, color 0.3s; }
+    .navbar-animated .nav a.active {
+      background: rgba(255,255,255,0.18);
+      color: #072146;
+      box-shadow: 0 2px 8px 0 rgba(30,167,255,0.10) inset;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-anim" aria-hidden="true"></div>
+  <div id="pageLoader" class="loader-overlay">
+    <div class="loader-circle" aria-hidden="true"></div>
+    <div class="loader-text">Загрузка</div>
+  </div>
+
+  <header class="site-header navbar-animated">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">UNРКН</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">☰</button>
+      <nav class="nav" id="mainNav">
+        <a href="index.html">Главная</a>
+        <a href="info.html">Инфо</a>
+        <a href="runet.html">РУНЕТ</a>
+        <a href="vk.html">ВК</a>
+        <a href="posts.html" class="active">Посты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero animate fade-up">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1>Посты сообщества</h1>
+          <p class="lead">В будущем здесь можно будет публиковать свои записи, делиться мнением и обсуждать новости РКН и свободы интернета.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card animate fade-up" style="margin-top:2rem;">
+      <h2>Публикация постов скоро будет доступна</h2>
+      <p>Раздел находится в разработке. В будущем здесь появится форма для добавления постов и лента записей от пользователей.</p>
+      <div class="posts-list" style="min-height:120px;opacity:0.5;text-align:center;padding:2rem 0;">
+        <em>Пока что здесь пусто…</em>
+      </div>
+      <button class="btn-report" id="openReportModal" type="button">Пожаловаться</button>
+    </section>
+
+    <!-- Модальное окно для жалобы -->
+    <div class="modal-report" id="modalReport" style="display:none;">
+      <div class="modal-report-backdrop" id="modalReportBackdrop"></div>
+      <div class="modal-report-content">
+        <button class="modal-report-close" id="closeReportModal" title="Закрыть">×</button>
+        <h3>Жалоба на сообщение</h3>
+        <p style="margin-bottom:1.2em;">Раздел в разработке. Приём жалоб временно недоступен.</p>
+        <button class="btn-report" id="closeReportModal2" type="button">Понятно</button>
+      </div>
+    </div>
+  </main>
+
+
+<section class="card animate fade-up" style="margin-top:2rem;">
+  <div id="cusdis_thread"
+  data-host="https://cusdis.com"
+  data-app-id="db8a7fa3-1ae6-4d63-933d-9f0c85de818e"
+  data-page-id="{{posts}}"
+  data-page-url="{{ PAGE_URL }}"
+  data-page-title="{{Посты}}"
+></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+ <noscript>Для работы комментариев требуется включить JavaScript.</noscript>
+</section>
+
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <p> UNРКН — информационный проект. Материалы носят аналитический характер.</p>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+  <script>
+    // Модалка жалобы
+    const openBtn = document.getElementById('openReportModal');
+    const modal = document.getElementById('modalReport');
+    const closeBtn = document.getElementById('closeReportModal');
+    const closeBtn2 = document.getElementById('closeReportModal2');
+    const backdrop = document.getElementById('modalReportBackdrop');
+    if (openBtn && modal) {
+      openBtn.onclick = () => { modal.style.display = 'block'; };
+      [closeBtn, closeBtn2, backdrop].forEach(el => {
+        if (el) el.onclick = () => { modal.style.display = 'none'; };
+      });
+      window.addEventListener('keydown', e => {
+        if (modal.style.display === 'block' && (e.key === 'Escape' || e.key === 'Esc')) modal.style.display = 'none';
+      });
+    }
+  </script>
+  <style>
+    .btn-report {
+      background: #e53935;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 0.55em 1.5em;
+      font-size: 1.08em;
+      font-family: 'Segoe UI Semibold', 'Inter', Arial, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      margin-top: 1.2em;
+      box-shadow: 0 2px 12px 0 rgba(229,57,53,0.10);
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+      outline: none;
+    }
+    .btn-report:hover, .btn-report:focus {
+      background: #b71c1c;
+      box-shadow: 0 4px 18px 0 rgba(229,57,53,0.16);
+      transform: translateY(-2px) scale(1.04);
+    }
+    .modal-report {
+      position: fixed; z-index: 1002; left: 0; top: 0; width: 100vw; height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: all;
+    }
+    .modal-report-backdrop {
+      position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(7,33,70,0.25);
+      backdrop-filter: blur(2px);
+      z-index: 0;
+    }
+    .modal-report-content {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px 0 rgba(30,167,255,0.13);
+      padding: 2.2em 1.5em 1.5em 1.5em;
+      min-width: 270px;
+      max-width: 96vw;
+      z-index: 1;
+      text-align: center;
+      animation: fadeUpModal 0.32s cubic-bezier(.2,.8,.2,1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-report-close {
+      position: absolute; right: 0.7em; top: 0.7em;
+      background: none; border: none; color: #b71c1c; font-size: 1.5em; cursor: pointer;
+      padding: 0; line-height: 1;
+      border-radius: 50%;
+      width: 2em; height: 2em;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.18s;
+    }
+    .modal-report-close:hover, .modal-report-close:focus {
+      background: #fbe9e7;
+    }
+    @keyframes fadeUpModal {
+      0% { opacity: 0; transform: translateY(30px) scale(0.98); }
+      100% { opacity: 1; transform: none; }
+    }
+    @media (max-width: 600px) {
+      .modal-report-content {
+        min-width: 0;
+        width: 96vw;
+        padding: 1.2em 0.5em 1em 0.5em;
+      }
+    }
+  </style>
+</body>
+</html>

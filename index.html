@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+  <!-- Всплывающее окно о технических работах -->
+  <div id="maintenanceBanner" class="maintenance-banner">
+    <span>На сайте ведутся технические работы, некоторые функции могут работать некорректно.</span>
+    <button id="closeMaintenanceBanner" class="maintenance-close" title="Закрыть">×</button>
+  </div>
+
   <div class="bg-anim" aria-hidden="true"></div>
   <div id="pageLoader" class="loader-overlay">
     <div class="loader-circle" aria-hidden="true"></div>
@@ -18,10 +24,11 @@
   <a class="brand" href="index.html">UNРКН</a>
       <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">☰</button>
       <nav class="nav" id="mainNav">
-        <a href="index.html" class="active">Главная</a>
-        <a href="info.html">Инфо</a>
-        <a href="runet.html">РУНЕТ</a>
-        <a href="vk.html">ВК</a>
+  <a href="index.html" class="active">Главная</a>
+  <a href="info.html">Инфо</a>
+  <a href="runet.html">РУНЕТ</a>
+  <a href="vk.html">ВК</a>
+  <a href="posts.html">Посты</a>
       </nav>
     </div>
   </header>
@@ -42,27 +49,27 @@
           <h2>Последние новости</h2>
 
           <article class="card animate fade-up">
-            <h3>19/10/2025 — YouTube: блогеры критикуют редизайн и изменения в рекомендательной системе</h3>
-            <p>Авторы отмечают, что новый дизайн и изменения в рекомендациях снизили органический охват мелких каналов. Некоторые блогеры сообщают о падении просмотров и сложностях с монетизацией.</p>
-            <a class="read-more" href="info.html">Подробнее →</a>
+            <h3>09/11/2025 — РКН начал массовую проверку VPN-сервисов</h3>
+            <p>Роскомнадзор объявил о старте новой волны блокировок VPN. Пользователи отмечают перебои в работе популярных приложений и ищут альтернативные способы обхода.</p>
+            <a class="read-more" href="bypass.html">Подробнее →</a>
           </article>
 
           <article class="card animate fade-up">
-            <h3>18/10/2025 — РКН предложил новые правила уведомлений для платформ</h3>
-            <p>В проекте правил — обязать платформы оперативно уведомлять пользователей о блокировках и скрытых ограничениях. Эксперты предупреждают о риске чрезмерной автоматизации модерации.</p>
-            <a class="read-more" href="info.html">Подробнее →</a>
-          </article>
-
-          <article class="card animate fade-up">
-            <h3>17/10/2025 — Telegram и «Макс»: обсуждения интеграции и модерации</h3>
-            <p>Платформы тестируют кросс-интеграции и инструменты модерации; разработчики отмечают напряжение между удобством пользователей и требованиями регуляторов.</p>
+            <h3>08/11/2025 — ВКонтакте внедряет автоматическую цензуру мемов</h3>
+            <p>ВК тестирует нейросети для фильтрации мемов и картинок. Сообщество опасается роста ложных срабатываний и ограничения свободы самовыражения.</p>
             <a class="read-more" href="vk.html">Подробнее →</a>
           </article>
 
           <article class="card animate fade-up">
-            <h3>16/10/2025 — Растёт число спорных блокировок у мелких провайдеров</h3>
-            <p>Местные провайдеры всё чаще блокируют доступ к ресурсам по требованию или в результате ошибок фильтров; юристы фиксируют рост жалоб от владельцев сайтов.</p>
-            <a class="read-more" href="vk.html">Подробнее →</a>
+            <h3>07/11/2025 — Telegram усиливает защиту каналов от блокировок</h3>
+            <p>Telegram внедрил новые прокси и инструменты для обхода ограничений в России. Администраторы каналов отмечают улучшение стабильности доступа.</p>
+            <a class="read-more" href="info.html">Подробнее →</a>
+          </article>
+
+          <article class="card animate fade-up">
+            <h3>05/11/2025 — YouTube ограничил рекомендации для российских пользователей</h3>
+            <p>Пользователи из РФ сообщают о снижении количества рекомендованных видео и трудностях с поиском независимого контента. Эксперты связывают это с новыми алгоритмами платформы.</p>
+            <a class="read-more" href="info.html">Подробнее →</a>
           </article>
         </section>
 
@@ -145,5 +152,18 @@
   </footer>
 
   <script src="assets/script.js"></script>
+  <script>
+    // Закрытие баннера о технических работах
+    document.addEventListener('DOMContentLoaded', function() {
+      var closeBtn = document.getElementById('closeMaintenanceBanner');
+      var banner = document.getElementById('maintenanceBanner');
+      if (closeBtn && banner) {
+        closeBtn.onclick = function() {
+          banner.style.display = 'none';
+        };
+      }
+    });
+  </script>
 </body>
 </html>
+

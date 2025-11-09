@@ -47,29 +47,19 @@
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero animate fade-up">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <h1>Посты сообщества</h1>
-          <p class="lead">В будущем здесь можно будет публиковать свои записи, делиться мнением и обсуждать новости РКН и свободы интернета.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ...удалён блок с "Публикация постов скоро будет доступна" и модалкой... -->
-  </main>
 
 
-<section class="card animate fade-up cusdis-card" style="margin-top:2rem;">
+<section class="card animate fade-up cusdis-card" style="margin-top:1rem;">
   <h2 style="margin-bottom:0.7em;">Посты и обсуждение</h2>
-  <p style="margin-bottom:1.2em; color:#23415a;">Вы можете оставить пост или комментарий без регистрации. Сообщения модерируются.</p>
+  <p style="margin-bottom:1.2em; color:#23415a;">Вы можете оставить пост или комментарий к посту без регистрации. Сообщения модерируются.</p>
   <div id="cusdis_thread"
     data-host="https://cusdis.com"
     data-app-id="db8a7fa3-1ae6-4d63-933d-9f0c85de818e"
     data-page-id="posts"
-    data-page-url="kivasily.github.io/unrkn/posts.html"
-    data-page-title="Посты"></div>
+    data-page-url="https://kivasily.github.io/unrkn/posts.html"
+    data-page-title="Посты"
+    data="auto"
+    ></div>
   <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
   <noscript>Для работы комментариев требуется включить JavaScript.</noscript>
   <div style="text-align:right; margin-top:1.5em;">
@@ -79,18 +69,23 @@
 <style>
   /* Стилизация блока Cusdis */
   .cusdis-card {
-    max-width: 600px;
+  max-width: 800px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 18px;
     box-shadow: 0 4px 24px 0 rgba(30,167,255,0.10);
-    padding: 2.2em 1.5em 1.5em 1.5em;
+    padding: 1.1em 2.2em 1.1em 2.2em;
     background: #f7fbff;
+    margin-top: 0.1em !important;
+    margin-bottom: 0.2em !important;
   }
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
     .cusdis-card {
-      padding: 1.1em 0.5em 1em 0.5em;
-      max-width: 98vw;
+      padding: 0.7em 0.7em 0.7em 0.7em;
+      max-width: 90vw;
+      margin-top: 0.1em !important;
+      margin-bottom: 0.1em !important;
     }
   }
   /* Кастомизация виджета Cusdis */
@@ -116,34 +111,50 @@
     border: 1.5px solid var(--cusdis-color-border) !important;
     background: var(--cusdis-color-input-bg) !important;
     color: var(--cusdis-color-input-text) !important;
-    padding: 0.5em 0.8em !important;
-    font-size: 1em !important;
-    margin-bottom: 0.7em !important;
+    padding: 1.1em 1.2em !important;
+    font-size: 1.08em !important;
+    margin-bottom: 1.2em !important;
     box-shadow: none !important;
     transition: border-color 0.18s;
   }
-  #cusdis_thread input:focus, #cusdis_thread textarea:focus {
-    border-color: var(--cusdis-color-primary) !important;
-    outline: none !important;
+  #cusdis_thread textarea {
+    min-height: 180px !important;
+    resize: vertical !important;
   }
-  #cusdis_thread button {
-    background: linear-gradient(90deg, #1ea7ff, #3ec6ff);
-    color: var(--cusdis-color-btn-text) !important;
-    border: none !important;
-    border-radius: 999px !important;
+  #cusdis_thread .cd-form {
+    min-height: 320px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    gap: 0.7em !important;
+    padding-top: 1.2em !important;
+    padding-bottom: 1.2em !important;
+  }
+  #cusdis_thread .cd-form label {
+    font-size: 1.04em !important;
+    margin-bottom: 0.3em !important;
+  }
+  #cusdis_thread {
+    --cusdis-color-primary: #1ea7ff;
+    --cusdis-color-primary-hover: #0b6fc2;
+    --cusdis-color-border: #b3e0ff;
+    --cusdis-color-input-bg: #fff;
+    --cusdis-color-input-text: #072146;
+    --cusdis-color-btn-text: #fff;
+    --cusdis-font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
     font-family: var(--cusdis-font-family);
-    font-weight: 600;
-    font-size: 1.08em;
-    padding: 0.55em 1.5em;
-    box-shadow: 0 2px 12px 0 rgba(30,167,255,0.10);
-    cursor: pointer;
-    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-    margin-top: 0.5em;
-  }
-  #cusdis_thread button:hover, #cusdis_thread button:focus {
-    background: linear-gradient(90deg, #0b6fc2, #1ea7ff);
-    box-shadow: 0 4px 18px 0 rgba(30,167,255,0.16);
-    transform: translateY(-2px) scale(1.04);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px 0 rgba(30,167,255,0.07);
+    padding: 1.2em 0.5em 0.7em 0.5em !important;
+    background: #fff;
+    margin: 0 auto;
+    max-width: 100%;
+    min-height: 260px !important;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
   }
   #cusdis_thread .cd-comment {
     border-radius: 10px;

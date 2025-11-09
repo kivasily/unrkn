@@ -57,39 +57,118 @@
       </div>
     </section>
 
-    <section class="card animate fade-up" style="margin-top:2rem;">
-      <h2>Публикация постов скоро будет доступна</h2>
-      <p>Раздел находится в разработке. В будущем здесь появится форма для добавления постов и лента записей от пользователей.</p>
-      <div class="posts-list" style="min-height:120px;opacity:0.5;text-align:center;padding:2rem 0;">
-        <em>Пока что здесь пусто…</em>
-      </div>
-      <button class="btn-report" id="openReportModal" type="button">Пожаловаться</button>
-    </section>
-
-    <!-- Модальное окно для жалобы -->
-    <div class="modal-report" id="modalReport" style="display:none;">
-      <div class="modal-report-backdrop" id="modalReportBackdrop"></div>
-      <div class="modal-report-content">
-        <button class="modal-report-close" id="closeReportModal" title="Закрыть">×</button>
-        <h3>Жалоба на сообщение</h3>
-        <p style="margin-bottom:1.2em;">Раздел в разработке. Приём жалоб временно недоступен.</p>
-        <button class="btn-report" id="closeReportModal2" type="button">Понятно</button>
-      </div>
-    </div>
+    <!-- ...удалён блок с "Публикация постов скоро будет доступна" и модалкой... -->
   </main>
 
 
-<section class="card animate fade-up" style="margin-top:2rem;">
+<section class="card animate fade-up cusdis-card" style="margin-top:2rem;">
+  <h2 style="margin-bottom:0.7em;">Посты и обсуждение</h2>
+  <p style="margin-bottom:1.2em; color:#23415a;">Вы можете оставить пост или комментарий без регистрации. Сообщения модерируются.</p>
   <div id="cusdis_thread"
-  data-host="https://cusdis.com"
-  data-app-id="db8a7fa3-1ae6-4d63-933d-9f0c85de818e"
-  data-page-id="{{posts}}"
-  data-page-url="{{ PAGE_URL }}"
-  data-page-title="{{Посты}}"
-></div>
-<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
- <noscript>Для работы комментариев требуется включить JavaScript.</noscript>
+    data-host="https://cusdis.com"
+    data-app-id="db8a7fa3-1ae6-4d63-933d-9f0c85de818e"
+    data-page-id="posts"
+    data-page-url="kivasily.github.io/unrkn/posts.html"
+    data-page-title="Посты"></div>
+  <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+  <noscript>Для работы комментариев требуется включить JavaScript.</noscript>
+  <div style="text-align:right; margin-top:1.5em;">
+    <button class="btn-report" id="openReportModal" type="button">Пожаловаться</button>
+  </div>
 </section>
+<style>
+  /* Стилизация блока Cusdis */
+  .cusdis-card {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px 0 rgba(30,167,255,0.10);
+    padding: 2.2em 1.5em 1.5em 1.5em;
+    background: #f7fbff;
+  }
+  @media (max-width: 700px) {
+    .cusdis-card {
+      padding: 1.1em 0.5em 1em 0.5em;
+      max-width: 98vw;
+    }
+  }
+  /* Кастомизация виджета Cusdis */
+  #cusdis_thread {
+    --cusdis-color-primary: #1ea7ff;
+    --cusdis-color-primary-hover: #0b6fc2;
+    --cusdis-color-border: #b3e0ff;
+    --cusdis-color-input-bg: #fff;
+    --cusdis-color-input-text: #072146;
+    --cusdis-color-btn-text: #fff;
+    --cusdis-font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-family: var(--cusdis-font-family);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px 0 rgba(30,167,255,0.07);
+    padding: 0.5em 0.5em 0.2em 0.5em;
+    background: #fff;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  #cusdis_thread input, #cusdis_thread textarea {
+    font-family: var(--cusdis-font-family);
+    border-radius: 8px !important;
+    border: 1.5px solid var(--cusdis-color-border) !important;
+    background: var(--cusdis-color-input-bg) !important;
+    color: var(--cusdis-color-input-text) !important;
+    padding: 0.5em 0.8em !important;
+    font-size: 1em !important;
+    margin-bottom: 0.7em !important;
+    box-shadow: none !important;
+    transition: border-color 0.18s;
+  }
+  #cusdis_thread input:focus, #cusdis_thread textarea:focus {
+    border-color: var(--cusdis-color-primary) !important;
+    outline: none !important;
+  }
+  #cusdis_thread button {
+    background: linear-gradient(90deg, #1ea7ff, #3ec6ff);
+    color: var(--cusdis-color-btn-text) !important;
+    border: none !important;
+    border-radius: 999px !important;
+    font-family: var(--cusdis-font-family);
+    font-weight: 600;
+    font-size: 1.08em;
+    padding: 0.55em 1.5em;
+    box-shadow: 0 2px 12px 0 rgba(30,167,255,0.10);
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    margin-top: 0.5em;
+  }
+  #cusdis_thread button:hover, #cusdis_thread button:focus {
+    background: linear-gradient(90deg, #0b6fc2, #1ea7ff);
+    box-shadow: 0 4px 18px 0 rgba(30,167,255,0.16);
+    transform: translateY(-2px) scale(1.04);
+  }
+  #cusdis_thread .cd-comment {
+    border-radius: 10px;
+    background: #f4f7fb;
+    margin-bottom: 1.1em;
+    padding: 0.8em 1em;
+    font-size: 1.01em;
+  }
+  #cusdis_thread .cd-comment-author {
+    font-weight: 700;
+    color: #1ea7ff;
+    font-family: var(--cusdis-font-family);
+  }
+  #cusdis_thread .cd-comment-content {
+    font-family: var(--cusdis-font-family);
+    color: #072146;
+  }
+  #cusdis_thread .cd-comment-time {
+    color: #6ca6d9;
+    font-size: 0.93em;
+  }
+  #cusdis_thread .cd-thread {
+    margin-top: 1.2em;
+  }
+</style>
 
 
 
@@ -101,21 +180,38 @@
 
   <script src="assets/script.js"></script>
   <script>
-    // Модалка жалобы
-    const openBtn = document.getElementById('openReportModal');
-    const modal = document.getElementById('modalReport');
-    const closeBtn = document.getElementById('closeReportModal');
-    const closeBtn2 = document.getElementById('closeReportModal2');
-    const backdrop = document.getElementById('modalReportBackdrop');
-    if (openBtn && modal) {
-      openBtn.onclick = () => { modal.style.display = 'block'; };
-      [closeBtn, closeBtn2, backdrop].forEach(el => {
-        if (el) el.onclick = () => { modal.style.display = 'none'; };
-      });
-      window.addEventListener('keydown', e => {
-        if (modal.style.display === 'block' && (e.key === 'Escape' || e.key === 'Esc')) modal.style.display = 'none';
-      });
-    }
+    // Модалка жалобы (переносим кнопку внутрь блока Cusdis)
+    document.addEventListener('DOMContentLoaded', function() {
+      const openBtn = document.getElementById('openReportModal');
+      let modal = document.getElementById('modalReport');
+      // Если модалка уже есть (после первого открытия)
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.className = 'modal-report';
+        modal.id = 'modalReport';
+        modal.style.display = 'none';
+        modal.innerHTML = `
+          <div class="modal-report-backdrop" id="modalReportBackdrop"></div>
+          <div class="modal-report-content">
+            <button class="modal-report-close" id="closeReportModal" title="Закрыть">×</button>
+            <h3>Жалоба на сообщение</h3>
+            <p style="margin-bottom:1.2em;">Раздел в разработке. Приём жалоб временно недоступен.</p>
+            <button class="btn-report" id="closeReportModal2" type="button">Понятно</button>
+          </div>
+        `;
+        document.body.appendChild(modal);
+      }
+      if (openBtn && modal) {
+        openBtn.onclick = () => { modal.style.display = 'block'; };
+        const closeModal = () => { modal.style.display = 'none'; };
+        modal.querySelectorAll('#closeReportModal, #closeReportModal2, #modalReportBackdrop').forEach(el => {
+          if (el) el.onclick = closeModal;
+        });
+        window.addEventListener('keydown', e => {
+          if (modal.style.display === 'block' && (e.key === 'Escape' || e.key === 'Esc')) closeModal();
+        });
+      }
+    });
   </script>
   <style>
     .btn-report {

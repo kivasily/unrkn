@@ -5,6 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Инфо — UNРКН</title>
   <link rel="stylesheet" href="assets/style.css">
+  <style>
+        :root {
+            /* Переменные для градиента */
+            --blue-start: #007bff; /* Яркий синий */
+            --blue-end: #00bcd4;   /* Голубой/Циан */
+            --white: #ffffff;
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5; /* Светлый фон для контраста */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .download-button {
+            /* Основные стили кнопки */
+            --button-size: 50px; /* Размер иконки на мобильных */
+            width: 140px; /* Ширина кнопки на ПК */
+            height: var(--button-size);
+            padding: 0 20px;
+            border: none;
+            border-radius: 25px; /* Скругленные углы */
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+
+            /* Градиентный фон */
+            background-image: linear-gradient(135deg, var(--blue-start) 0%, var(--blue-end) 100%);
+            transition: all var(--transition-speed) ease-out;
+
+            /* Анимация текста и иконки */
+            will-change: transform, box-shadow;
+        }
+
+        /* Анимация при наведении */
+        .download-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background-image: linear-gradient(135deg, #0056b3 0%, #0097a7 100%); /* Более темный градиент при наведении */
+        }
+
+        /* Анимация при нажатии */
+        .download-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition-duration: 0.1s;
+        }
+
+        .button-icon {
+            font-size: 20px;
+            line-height: 1;
+            transition: transform var(--transition-speed) ease-out;
+            /* Иконка стрелки вниз (можно заменить на SVG или иконочный шрифт) */
+        }
+
+        /* Эффект пульсации/движения иконки при наведении */
+        .download-button:hover .button-icon {
+            transform: translateY(2px);
+        }
+
+        .button-text {
+            /* Стиль текста */
+            transition: opacity var(--transition-speed) ease-out;
+            display: inline;
+        }
+
+        /* Адаптивность для мобильных устройств (кнопка становится круглой иконкой) */
+        @media (max-width: 600px) {
+            .download-button {
+                width: var(--button-size);
+                padding: 0;
+                border-radius: 50%; /* Круглая форма */
+            }
+
+            .button-text {
+                display: none; /* Скрыть текст на мобильных */
+            }
+
+            .button-icon {
+                font-size: 24px;
+            }
+        }
+    </style>
+
 </head>
 <body>
   <div class="bg-anim" aria-hidden="true"></div>
@@ -50,6 +149,42 @@
     <h2 class="animate fade-up">Контакты и вклад</h2>
     <p class="animate fade-up">Свяжитесь с нами в Discord: <a href="https://discordapp.com/users/1340334027730714706/">@unrkn</a></p>
     <p class="animate fade-up">Или свяжитесь с нами по почте: <a href="mailto:compixelize@gmail.com">Почта</a></p>
+
+<a id="downloadBtn" href="#" class="download-button" download>
+    <span class="button-icon">↓</span>
+    <span class="button-text">Скачать</span>
+</a>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const downloadBtn = document.getElementById('downloadBtn');
+        
+        // *** 1. Установите вашу ссылку на файл здесь: ***
+        const fileUrl = 'https://example.com/path/to/your/file.zip'; // <-- ЗАМЕНИТЕ ЭТО
+        
+        // Устанавливаем ссылку на элемент <a>
+        downloadBtn.href = fileUrl;
+
+        // 2. JS для обработки клика (дополнительно, если нужна логика перед скачиванием)
+        downloadBtn.addEventListener('click', (event) => {
+            // event.preventDefault(); // Раскомментируйте, если хотите управлять скачиванием полностью через JS (например, для аналитики)
+
+            console.log('Начата попытка загрузки файла:', fileUrl);
+            
+            // Если event.preventDefault() не используется, браузер начнет загрузку автоматически.
+            
+            // Можно добавить класс для визуальной обратной связи (например, 'downloading')
+            downloadBtn.classList.add('is-downloading');
+            
+            // Удалить класс через короткое время, если не нужна долгая индикация
+            setTimeout(() => {
+                downloadBtn.classList.remove('is-downloading');
+            }, 1000);
+        });
+    });
+</script>
+
+
+    
   </main>
 
   <footer class="site-footer">
@@ -61,4 +196,5 @@
   <script src="assets/script.js"></script>
 </body>
 </html>
+
 

@@ -4,106 +4,117 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Инфо — UNРКН</title>
-
-  <style>
-        :root {
-            /* Переменные для градиента */
-            --blue-start: #007bff; /* Яркий синий */
-            --blue-end: #00bcd4;   /* Голубой/Циан */
-            --white: #ffffff;
-            --transition-speed: 0.3s;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5; /* Светлый фон для контраста */
+<style>
+        /* * ==========================================================
+         * СТИЛИ ДЛЯ КОНТЕЙНЕРА КНОПКИ СКАЧИВАНИЯ
+         * Все стили изолированы внутри класса .download-button-container
+         * ==========================================================
+        */
+        
+        .download-button-container {
+            /* * Этот контейнер нужен для изоляции стилей.
+             * Можешь задать ему свои 'margin' или 'display', 
+             * чтобы разместить кнопку там, где нужно на твоей странице.
+             * Например, display: flex; justify-content: center; 
+             */
+            
+            /* Локальные CSS-переменные, чтобы не конфликтовать с :root */
+            --dl-blue-start: #007bff;
+            --dl-blue-end: #00bcd4;
+            --dl-white: #ffffff;
+            --dl-transition-speed: 0.3s;
+            
+            /* Обеспечиваем правильное отображение */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box; /* Гарантирует, что padding/border не сломают верстку */
+        }
+        
+        /* Применяем box-sizing ко всем вложенным элементам для предсказуемости */
+        .download-button-container *,
+        .download-button-container *::before,
+        .download-button-container *::after {
+            box-sizing: inherit;
         }
 
-        .download-button {
+        .download-button-container .download-button {
             /* Основные стили кнопки */
             --button-size: 50px; /* Размер иконки на мобильных */
             width: 140px; /* Ширина кнопки на ПК */
             height: var(--button-size);
             padding: 0 20px;
+            margin: 0; /* Убираем отступы по умолчанию */
             border: none;
             border-radius: 25px; /* Скругленные углы */
             cursor: pointer;
             outline: none;
-            display: flex;
+            display: inline-flex; /* Используем inline-flex, чтобы кнопка вела себя как элемент строки */
             align-items: center;
             justify-content: center;
             gap: 8px;
             font-size: 16px;
             font-weight: 600;
-            color: var(--white);
-            text-decoration: none;
+            color: var(--dl-white);
+            text-decoration: none; /* Убираем подчеркивание у ссылки */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
 
             /* Градиентный фон */
-            background-image: linear-gradient(135deg, var(--blue-start) 0%, var(--blue-end) 100%);
-            transition: all var(--transition-speed) ease-out;
-
-            /* Анимация текста и иконки */
+            background-image: linear-gradient(135deg, var(--dl-blue-start) 0%, var(--dl-blue-end) 100%);
+            transition: all var(--dl-transition-speed) ease-out;
             will-change: transform, box-shadow;
         }
 
         /* Анимация при наведении */
-        .download-button:hover {
+        .download-button-container .download-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            background-image: linear-gradient(135deg, #0056b3 0%, #0097a7 100%); /* Более темный градиент при наведении */
+            background-image: linear-gradient(135deg, #0056b3 0%, #0097a7 100%);
+            color: var(--dl-white); /* Убедимся, что цвет текста не меняется */
         }
 
         /* Анимация при нажатии */
-        .download-button:active {
+        .download-button-container .download-button:active {
             transform: translateY(0);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             transition-duration: 0.1s;
         }
 
-        .button-icon {
+        .download-button-container .button-icon {
             font-size: 20px;
             line-height: 1;
-            transition: transform var(--transition-speed) ease-out;
-            /* Иконка стрелки вниз (можно заменить на SVG или иконочный шрифт) */
+            transition: transform var(--dl-transition-speed) ease-out;
+            color: var(--dl-white); /* Явно задаем цвет */
         }
 
         /* Эффект пульсации/движения иконки при наведении */
-        .download-button:hover .button-icon {
+        .download-button-container .download-button:hover .button-icon {
             transform: translateY(2px);
         }
 
-        .button-text {
-            /* Стиль текста */
-            transition: opacity var(--transition-speed) ease-out;
+        .download-button-container .button-text {
+            transition: opacity var(--dl-transition-speed) ease-out;
             display: inline;
+            color: var(--dl-white); /* Явно задаем цвет */
         }
 
         /* Адаптивность для мобильных устройств (кнопка становится круглой иконкой) */
         @media (max-width: 600px) {
-            .download-button {
+            .download-button-container .download-button {
                 width: var(--button-size);
                 padding: 0;
                 border-radius: 50%; /* Круглая форма */
             }
 
-            .button-text {
+            .download-button-container .button-text {
                 display: none; /* Скрыть текст на мобильных */
             }
 
-            .button-icon {
+            .download-button-container .button-icon {
                 font-size: 24px;
             }
         }
     </style>
-
     <link rel="stylesheet" href="assets/style.css">
 
 </head>
@@ -152,39 +163,42 @@
     <p class="animate fade-up">Свяжитесь с нами в Discord: <a href="https://discordapp.com/users/1340334027730714706/">@unrkn</a></p>
     <p class="animate fade-up">Или свяжитесь с нами по почте: <a href="mailto:compixelize@gmail.com">Почта</a></p>
 
-<a id="downloadBtn" href="#" class="download-button" download>
-    <span class="button-icon">↓</span>
-    <span class="button-text">Скачать</span>
-</a>
+<div class="download-button-container">
+        <a id="downloadBtn" href="#" class="download-button" download>
+            <span class="button-icon">↓</span>
+            <span class="button-text">Скачать</span>
+        </a>
+    </div>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const downloadBtn = document.getElementById('downloadBtn');
+        // Этот JS-код безопасен, так как он ищет элемент по ID ('downloadBtn'),
+        // который мы используем только в этой кнопке.
         
-        // *** 1. Установите вашу ссылку на файл здесь: ***
-        const fileUrl = 'https://example.com/path/to/your/file.zip'; // <-- ЗАМЕНИТЕ ЭТО
-        
-        // Устанавливаем ссылку на элемент <a>
-        downloadBtn.href = fileUrl;
+        document.addEventListener('DOMContentLoaded', () => {
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            // Если скрипт по какой-то причине не найдет кнопку
+            // (например, ее нет на странице), он просто ничего не сделает.
+            if (downloadBtn) {
+            
+                // *** 1. Установите вашу ссылку на файл здесь: ***
+                const fileUrl = 'https://example.com/path/to/your/file.zip'; // <-- ЗАМЕНИТЕ ЭТО
+                
+                // Устанавливаем ссылку на элемент <a>
+                downloadBtn.href = fileUrl;
 
-        // 2. JS для обработки клика (дополнительно, если нужна логика перед скачиванием)
-        downloadBtn.addEventListener('click', (event) => {
-            // event.preventDefault(); // Раскомментируйте, если хотите управлять скачиванием полностью через JS (например, для аналитики)
-
-            console.log('Начата попытка загрузки файла:', fileUrl);
-            
-            // Если event.preventDefault() не используется, браузер начнет загрузку автоматически.
-            
-            // Можно добавить класс для визуальной обратной связи (например, 'downloading')
-            downloadBtn.classList.add('is-downloading');
-            
-            // Удалить класс через короткое время, если не нужна долгая индикация
-            setTimeout(() => {
-                downloadBtn.classList.remove('is-downloading');
-            }, 1000);
+                // 2. JS для обработки клика (дополнительно)
+                downloadBtn.addEventListener('click', (event) => {
+                    console.log('Начата попытка загрузки файла:', fileUrl);
+                    
+                    downloadBtn.classList.add('is-downloading');
+                    
+                    setTimeout(() => {
+                        downloadBtn.classList.remove('is-downloading');
+                    }, 1000);
+                });
+            }
         });
-    });
-</script>
-
+    </script>
 
     
   </main>
@@ -198,6 +212,7 @@
   <script src="assets/script.js"></script>
 </body>
 </html>
+
 
 
 

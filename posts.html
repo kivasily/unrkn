@@ -24,9 +24,97 @@
       color: #072146;
       box-shadow: 0 2px 8px 0 rgba(30,167,255,0.10) inset;
     }
+    /* Стили для страницы "Посты" (Cusdis). Вынесены сюда из assets/style.css */
+    .posts-page .cusdis-card {
+      max-width: 800px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px 0 rgba(30,167,255,0.10);
+      padding: 1.1em 2.2em 1.1em 2.2em;
+      background: #f7fbff;
+      margin-top: 1.2rem !important; /* небольшой отступ от navbar */
+      margin-bottom: 0.6rem !important;
+    }
+
+    .posts-page #cusdis_thread {
+      --cusdis-color-primary: #1ea7ff;
+      --cusdis-color-primary-hover: #0b6fc2;
+      --cusdis-color-border: #b3e0ff;
+      --cusdis-color-input-bg: #fff;
+      --cusdis-color-input-text: #072146;
+      --cusdis-color-btn-text: #fff;
+      --cusdis-font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      font-family: var(--cusdis-font-family);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px 0 rgba(30,167,255,0.07);
+      padding: 1.2em 0.6em 0.8em 0.6em !important;
+      background: #fff;
+      margin: 0 auto;
+      max-width: 100%;
+      min-height: 240px !important;
+      height: auto !important;
+      display: block; /* keep the widget block-level so it doesn't stretch other layout elements */
+    }
+    .posts-page #cusdis_thread input, .posts-page #cusdis_thread textarea {
+      font-family: var(--cusdis-font-family);
+      border-radius: 8px !important;
+      border: 1.5px solid var(--cusdis-color-border) !important;
+      background: var(--cusdis-color-input-bg) !important;
+      color: var(--cusdis-color-input-text) !important;
+      padding: 1.1em 1.2em !important;
+      font-size: 1.08em !important;
+      margin-bottom: 1.2em !important;
+      box-shadow: none !important;
+      transition: border-color 0.18s;
+    }
+    .posts-page #cusdis_thread textarea {
+      min-height: 200px !important;
+      resize: vertical !important;
+    }
+    .posts-page #cusdis_thread .cd-form {
+      min-height: 360px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      gap: 0.8em !important;
+      padding-top: 1.2em !important;
+      padding-bottom: 1.2em !important;
+      border: 2px solid rgba(179,224,255,0.45) !important;
+      border-radius: 12px !important;
+      background: #fbfeff !important;
+    }
+    .posts-page #cusdis_thread .cd-form label {
+      font-size: 1.04em !important;
+      margin-bottom: 0.3em !important;
+    }
+    .posts-page #cusdis_thread .cd-comment {
+      border-radius: 10px;
+      background: #f4f7fb;
+      margin-bottom: 1.1em;
+      padding: 0.8em 1em;
+      font-size: 1.01em;
+    }
+    .posts-page #cusdis_thread .cd-comment-author {
+      font-weight: 700;
+      color: #1ea7ff;
+      font-family: var(--cusdis-font-family);
+    }
+    .posts-page #cusdis_thread .cd-comment-content {
+      font-family: var(--cusdis-font-family);
+      color: #072146;
+    }
+    .posts-page #cusdis_thread .cd-comment-time {
+      color: #6ca6d9;
+      font-size: 0.93em;
+    }
+    .posts-page #cusdis_thread .cd-thread {
+      margin-top: 1.2em;
+    }
   </style>
 </head>
-<body>
+<body class="posts-page">
   <div class="bg-anim" aria-hidden="true"></div>
   <div id="pageLoader" class="loader-overlay">
     <div class="loader-circle" aria-hidden="true"></div>
@@ -69,123 +157,10 @@
   </div>
 </section>
 
-<style>
-  /* Стилизация блока Cusdis */
-  .cusdis-card {
-  max-width: 800px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px 0 rgba(30,167,255,0.10);
-    padding: 1.1em 2.2em 1.1em 2.2em;
-    background: #f7fbff;
-    margin-top: 0.1em !important;
-    margin-bottom: 0.2em !important;
-  }
-  @media (max-width: 900px) {
-    .cusdis-card {
-      padding: 0.7em 0.7em 0.7em 0.7em;
-      max-width: 90vw;
-      margin-top: 0.1em !important;
-      margin-bottom: 0.1em !important;
-    }
-  }
-  /* Кастомизация виджета Cusdis */
-  #cusdis_thread {
-    --cusdis-color-primary: #1ea7ff;
-    --cusdis-color-primary-hover: #0b6fc2;
-    --cusdis-color-border: #b3e0ff;
-    --cusdis-color-input-bg: #fff;
-    --cusdis-color-input-text: #072146;
-    --cusdis-color-btn-text: #fff;
-    --cusdis-font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    font-family: var(--cusdis-font-family);
-    border-radius: 14px;
-    box-shadow: 0 2px 12px 0 rgba(30,167,255,0.07);
-    padding: 0.5em 0.5em 0.2em 0.5em;
-    background: #fff;
-    margin: 0 auto;
-    max-width: 100%;
-  }
-  #cusdis_thread input, #cusdis_thread textarea {
-    font-family: var(--cusdis-font-family);
-    border-radius: 8px !important;
-    border: 1.5px solid var(--cusdis-color-border) !important;
-    background: var(--cusdis-color-input-bg) !important;
-    color: var(--cusdis-color-input-text) !important;
-    padding: 1.1em 1.2em !important;
-    font-size: 1.08em !important;
-    margin-bottom: 1.2em !important;
-    box-shadow: none !important;
-    transition: border-color 0.18s;
-  }
-  #cusdis_thread textarea {
-    min-height: 180px !important;
-    resize: vertical !important;
-  }
-  #cusdis_thread .cd-form {
-    min-height: 320px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    gap: 0.7em !important;
-    padding-top: 1.2em !important;
-    padding-bottom: 1.2em !important;
-  }
-  #cusdis_thread .cd-form label {
-    font-size: 1.04em !important;
-    margin-bottom: 0.3em !important;
-  }
-  #cusdis_thread {
-    --cusdis-color-primary: #1ea7ff;
-    --cusdis-color-primary-hover: #0b6fc2;
-    --cusdis-color-border: #b3e0ff;
-    --cusdis-color-input-bg: #fff;
-    --cusdis-color-input-text: #072146;
-    --cusdis-color-btn-text: #fff;
-    --cusdis-font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    font-family: var(--cusdis-font-family);
-    border-radius: 14px;
-    box-shadow: 0 2px 12px 0 rgba(30,167,255,0.07);
-    padding: 1.2em 0.5em 0.7em 0.5em !important;
-    background: #fff;
-    margin: 0 auto;
-    max-width: 100%;
-    min-height: 260px !important;
-    height: auto !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-  }
-  #cusdis_thread .cd-comment {
-    border-radius: 10px;
-    background: #f4f7fb;
-    margin-bottom: 1.1em;
-    padding: 0.8em 1em;
-    font-size: 1.01em;
-  }
-  #cusdis_thread .cd-comment-author {
-    font-weight: 700;
-    color: #1ea7ff;
-    font-family: var(--cusdis-font-family);
-  }
-  #cusdis_thread .cd-comment-content {
-    font-family: var(--cusdis-font-family);
-    color: #072146;
-  }
-  #cusdis_thread .cd-comment-time {
-    color: #6ca6d9;
-    font-size: 0.93em;
-  }
-  #cusdis_thread .cd-thread {
-    margin-top: 1.2em;
-  }
-</style>
+<!-- cusdis styles moved to assets/style.css scoped under .posts-page to avoid leaking to other pages -->
 
- <h3>Мы понимаем, что система постов (комментариев) может показаться неудобной, из-за маленького размера окна с написанием и прочтением комментариев. К сожалению, сейчас мы не можем сменить ее на другую. Для обратной связи с разработчиком лучше воспользуйтесь почтой или DS на странице "Инфо".</h3>
-
+ <h3 class="animate fade-up">      Мы понимаем, что система постов (комментариев) может показаться неудобной, из-за маленького размера окна с написанием и прочтением комментариев. К сожалению, сейчас мы не можем сменить ее на другую. Для обратной связи с разработчиком лучше воспользуйтесь почтой или DS на странице "Инфо".</h3>
+ 
   <footer class="site-footer">
     <div class="container">
       <p> UNРКН — информационный проект. Материалы носят аналитический характер.</p>

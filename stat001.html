@@ -35,6 +35,21 @@
 
     /* Keep page content away from edges slightly */
     main { max-width:1000px; margin:1.25rem auto; padding:0 1rem }
+
+    /* Ensure future article blocks don't touch the screen edges */
+    .container, main { padding-left: 1rem; padding-right: 1rem }
+    .card { box-sizing: border-box; margin-left: auto; margin-right: auto; max-width: 1000px }
+    .animate.fade-up { padding-left: 0.25rem; padding-right: 0.25rem }
+    @media (max-width:900px) {
+      .container, main { padding-left: 0.9rem; padding-right: 0.9rem }
+      .card { margin-left: 0.8rem; margin-right: 0.8rem; max-width: calc(100% - 1.6rem) }
+      .animate.fade-up { padding-left: 0.6rem; padding-right: 0.6rem }
+    }
+    @media (max-width:420px) {
+      .container, main { padding-left: 0.9rem; padding-right: 0.9rem }
+      .card { margin-left: 0.9rem; margin-right: 0.9rem; max-width: calc(100% - 1.8rem); padding-left:0.5rem; padding-right:0.5rem }
+      .animate.fade-up { padding-left: 0.9rem; padding-right: 0.9rem }
+    }
   </style>
 </head>
 <body>
@@ -94,8 +109,7 @@
             <li>Безопасность: Некоторые прокси могут быть настроены злоумышленниками для внедрения вредоносного ПО или фишинговых атак.</li>
         </ul>
             <p>Именно из-за этих рисков при необходимости анонимности или безопасности чаще рекомендуют использовать VPN (Virtual Private Network), который в отличие от простого прокси, обычно шифрует весь трафик между вашим устройством и VPN-сервером.</p>
-       <p><i>Статья (#001) от 11.12.25</i></p>
-           <p><i>Автор: официальный источник - Unrkn✅ </i></p>
+       <p><i>Статья от 11.12.25</i></p>
     </section>
   </main>
       <section class="card animate fade-up">
